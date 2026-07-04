@@ -4,7 +4,7 @@ Completá la grilla en orden ascendente. Sin espacio para errores.
 
 ![alt text](image-1.png)
 
----
+
 
 ## Cómo se juega
 
@@ -14,16 +14,15 @@ Cada turno se genera un número aleatorio entre 1 y 999. Tu objetivo es arrastra
 - 💀 Si se genera un número que no puede colocarse en ningún casillero disponible, perdés.
 - 🏆 Si lográs llenar los 20 casilleros, ganás.
 
----
 
 ## Stack
 
 - React + Vite
 - [@dnd-kit](https://dndkit.com/) para el drag & drop (compatible con mouse y pantalla táctil)
-- CSS puro
-- Desplegado en Vercel
+- CSS
 
----
+## ¡Probalo ahora!
+- [ascend.ignamosconi.com.ar](ascend.ignamosconi.com.ar)
 
 ## Correrlo localmente
 
