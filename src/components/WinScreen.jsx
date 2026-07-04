@@ -60,9 +60,6 @@ function WinScreen({ board, onRetry }) {
                         <button className="retryBtn" onClick={() => setVerGrilla(true)}>
                             Ver grilla 
                         </button>
-                        <button className="retryBtn" onClick={onRetry}>
-                            ¿Otra?
-                        </button>
                     </div>
                 </div>
             )}

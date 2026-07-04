@@ -16,6 +16,7 @@ function App() {
     const [win, setWin] = useState(false);
     const [saliendo, setSaliendo] = useState(false);
     const [colocado, setColocado] = useState(false);
+    const [mostrarBotonOtra, setMostrarBotonOtra] = useState(false);
 
     function handleDragStart() {
         setDragging(true);
@@ -33,7 +34,11 @@ function App() {
         nuevoTablero[posicion] = numero;
         setBoard(nuevoTablero);
 
-        if (checkWin(nuevoTablero)) { setWin(true); return; }
+        if (checkWin(nuevoTablero)) { 
+            setWin(true); 
+            setTimeout(() => setMostrarBotonOtra(true), 300);
+            return; 
+        }
 
         const siguiente = generarNumero();
         const hayLugar = hayLugarParaNumero(nuevoTablero, siguiente);
@@ -43,6 +48,7 @@ function App() {
             if (!hayLugar) {
                 setNumeroSinLugar(siguiente);
                 setGameOver(true);
+                setTimeout(() => setMostrarBotonOtra(true), 300);
                 return;
             }
             setNumero(siguiente);
@@ -62,26 +68,28 @@ function App() {
         setSaliendo(false);
         setColocado(false);
         setNumeroSinLugar(null);
+        setMostrarBotonOtra(false);
     }
 
     return (
         <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
             <div className="app">
                 <h1>ASCEND</h1>
-                <p className="subtitle">Colocá cada número en orden ascendente. Sin espacio para errores</p>
-
+                <p className="subtitle">Colocá cada número en orden ascendente. Sin espacio para errores.</p>
                 <div className="cardSlot">
                     {!dragging && !saliendo && !gameOver && !win && (
                         <Card key={numero} numero={numero} />
                     )}
+                    {mostrarBotonOtra && (
+                        <button className="retryBtn retryBtnSlot" onClick={retry}>
+                            ¿Otra?
+                        </button>
+                    )}
                 </div>
-
                 <Board board={board} />
-
                 <DragOverlay dropAnimation={null}>
                     {dragging && <Card numero={numero} dragging={true} />}
                 </DragOverlay>
-
                 {win && <WinScreen board={board} onRetry={retry} />}
                 {gameOver && <GameOver numero={numeroSinLugar} onRetry={retry} />}
             </div>
