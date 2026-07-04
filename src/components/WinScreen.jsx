@@ -57,7 +57,7 @@ function WinScreen({ board, onRetry }) {
                     Llenaste los 20 casilleros en orden ascendente.
                 </p>
                 <button className="retryBtn" onClick={onRetry}>
-                    Jugar de nuevo
+                    ¿Otra?
                 </button>
             </div>
         </div>
