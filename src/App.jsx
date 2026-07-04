@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Nav from "./components/Nav";
 import { DndContext, DragOverlay, useSensor, useSensors, PointerSensor, TouchSensor } from "@dnd-kit/core";
 import "./App.css";
 import colors from "./colors";
@@ -102,6 +103,7 @@ function App() {
     return (
         <DndContext sensors={sensors} onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
             <div className="app">
+                <Nav />
                 <h1>ASCEND</h1>
                 <p className="subtitle">
                     Completá la grilla en orden ascendente.
