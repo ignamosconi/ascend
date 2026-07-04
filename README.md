@@ -21,8 +21,8 @@ Cada turno se genera un número aleatorio entre 1 y 999. Tu objetivo es arrastra
 - [@dnd-kit](https://dndkit.com/) para el drag & drop (compatible con mouse y pantalla táctil)
 - CSS
 
-## ¡Probalo ahora
-- ascend.ignamosconi.com.ar
+## ¡Probalo ahora!
+- [ascend.ignamosconi.com.ar](ascend.ignamosconi.com.ar)
 
 ## Correrlo localmente
 
