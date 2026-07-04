@@ -1,8 +1,8 @@
 import Cell from "./Cell";
 
-function Board({ board, colores }) {
+function Board({ board, colores, dragging }) {
     return (
-        <div className="board">
+        <div className={`board ${dragging ? "board-dragging" : ""}`}>
             {board.map((valor, index) => (
                 <Cell
                     key={index}

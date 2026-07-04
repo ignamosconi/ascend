@@ -119,7 +119,7 @@ function App() {
                         </button>
                     )}
                 </div>
-                <Board board={board} colores={coloresTablero} />
+                <Board board={board} colores={coloresTablero} dragging={dragging} />
                 <DragOverlay dropAnimation={null}>
                     {dragging && <Card numero={numero} dragging={true} color={colorActual} />}
                 </DragOverlay>
