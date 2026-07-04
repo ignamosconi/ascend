@@ -13,7 +13,7 @@ function App() {
     const [dragging, setDragging] = useState(false);
     const [gameOver, setGameOver] = useState(false);
     const [numeroSinLugar, setNumeroSinLugar] = useState(null);
-    const [win, setWin] = useState(true);
+    const [win, setWin] = useState(false);
     const [saliendo, setSaliendo] = useState(false);
     const [colocado, setColocado] = useState(false);
 

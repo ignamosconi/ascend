@@ -1,14 +1,14 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function WinScreen({ board, onRetry }) {
     const canvasRef = useRef(null);
+    const [verGrilla, setVerGrilla] = useState(false);
 
     useEffect(() => {
         const canvas = canvasRef.current;
         const ctx = canvas.getContext("2d");
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-
         const colors = ["#ffe95e", "#ffd6f4", "#d8ffff", "#fff8a7", "#ff6b6b", "#8de8ff"];
         const particles = Array.from({ length: 120 }, () => ({
             x: Math.random() * canvas.width,
@@ -19,7 +19,6 @@ function WinScreen({ board, onRetry }) {
             swing: Math.random() * 3 - 1.5,
             angle: Math.random() * 360,
         }));
-
         let animId;
         function draw() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -48,19 +47,26 @@ function WinScreen({ board, onRetry }) {
     }, []);
 
     return (
-        <div className="overlay">
+        <>
             <canvas ref={canvasRef} className="confettiCanvas" />
-            <div className="overlayCard">
-                <div className="overlayEmoji">🏆</div>
-                <h2 className="overlayTitle">¡GANASTE!</h2>
-                <p className="overlayText">
-                    Llenaste los 20 casilleros en orden ascendente.
-                </p>
-                <button className="retryBtn" onClick={onRetry}>
-                    ¿Otra?
-                </button>
-            </div>
-        </div>
+            {!verGrilla && (
+                <div className="overlay">
+                    <div className="overlayCard">
+                        <div className="overlayEmoji">🏆</div>
+                        <h2 className="overlayTitle">¡GANASTE!</h2>
+                        <p className="overlayText">
+                            Llenaste los 20 casilleros en orden ascendente.
+                        </p>
+                        <button className="retryBtn" onClick={() => setVerGrilla(true)}>
+                            Ver grilla
+                        </button>
+                        <button className="retryBtn" onClick={onRetry}>
+                            ¿Otra?
+                        </button>
+                    </div>
+                </div>
+            )}
+        </>
     );
 }
 
