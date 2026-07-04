@@ -61,7 +61,7 @@ function App() {
 
         if (checkWin(nuevoTablero)) {
             setWin(true);
-            setTimeout(() => setMostrarBotonOtra(true), 300);
+            setTimeout(() => setMostrarBotonOtra(true), 0);
             return;
         }
         const siguiente = generarNumero();
@@ -71,7 +71,7 @@ function App() {
             if (!hayLugar) {
                 setNumeroSinLugar(siguiente);
                 setGameOver(true);
-                setTimeout(() => setMostrarBotonOtra(true), 300);
+                setTimeout(() => setMostrarBotonOtra(true), 0);
                 return;
             }
             setNumero(siguiente);
