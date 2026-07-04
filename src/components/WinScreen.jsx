@@ -58,7 +58,7 @@ function WinScreen({ board, onRetry }) {
                             Llenaste los 20 casilleros en orden ascendente.
                         </p>
                         <button className="retryBtn" onClick={() => setVerGrilla(true)}>
-                            Ver grilla
+                            Ver grilla 
                         </button>
                         <button className="retryBtn" onClick={onRetry}>
                             ¿Otra?
