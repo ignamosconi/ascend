@@ -1,30 +1,20 @@
-//Card.jsx
-import {useDraggable} from "@dnd-kit/core";
+import { useDraggable } from "@dnd-kit/core";
 
-function Card({numero}){
+function Card({ numero, dragging }) {
+    const { attributes, listeners, setNodeRef } = useDraggable({ id: "card" });
 
-    const {
-        attributes,
-        listeners,
-        setNodeRef,
-        transform
-    } = useDraggable({
-        id:"card"
-    });
+    const className = dragging ? "card card-small" : "card";
 
-    const style={
-        transform:transform?
-        `translate3d(${transform.x}px,${transform.y}px,0)`
-        :undefined
-    };
-
-    return(
-
-        <div ref={setNodeRef} style={style} {...listeners} {...attributes} className="card" >
+    return (
+        <div
+            ref={setNodeRef}
+            {...listeners}
+            {...attributes}
+            className={className}
+        >
             {numero}
         </div>
     );
-
 }
 
 export default Card;

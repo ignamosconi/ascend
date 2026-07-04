@@ -1,39 +1,34 @@
-//App.jsx
 import "./App.css";
 import { useState } from "react";
 import { DndContext, DragOverlay } from "@dnd-kit/core";
-
 import Board from "./components/Board";
 import Card from "./components/Card";
-
+import WinScreen from "./components/WinScreen";
+import GameOver from "./components/GameOver";
 import { generarNumero, hayLugarParaNumero, checkWin, puedeColocar } from "./game";
 
-
-
-function App(){
-
-    //ESTADOS
-    const [numero,setNumero]=useState(generarNumero());
-    const [board,setBoard]=useState( Array(20).fill(null) );
-    const [dragging,setDragging]=useState(false);
-
+function App() {
+    const [numero, setNumero] = useState(generarNumero());
+    const [board, setBoard] = useState(Array(20).fill(null));
+    const [dragging, setDragging] = useState(false);
     const [gameOver, setGameOver] = useState(false);
+    const [numeroSinLugar, setNumeroSinLugar] = useState(null);
     const [win, setWin] = useState(false);
+    const [saliendo, setSaliendo] = useState(false);
+    const [colocado, setColocado] = useState(false);
 
-    //FUNCIONES
-    function handleDragStart(){
+    function handleDragStart() {
         setDragging(true);
+        setColocado(false);
     }
 
     function handleDragEnd(event) {
         setDragging(false);
         if (!event.over || gameOver || win) return;
-
         const posicion = event.over.id - 1;
-
-        // ← NUEVO: rechazar si la celda está ocupada O el número no encaja
         if (!puedeColocar(board, posicion, numero)) return;
 
+        setColocado(true);
         const nuevoTablero = [...board];
         nuevoTablero[posicion] = numero;
         setBoard(nuevoTablero);
@@ -41,40 +36,57 @@ function App(){
         if (checkWin(nuevoTablero)) { setWin(true); return; }
 
         const siguiente = generarNumero();
-        if (!hayLugarParaNumero(nuevoTablero, siguiente)) { setGameOver(true); return; }
+        const hayLugar = hayLugarParaNumero(nuevoTablero, siguiente);
 
-        setNumero(siguiente);
+        setSaliendo(true);
+        setTimeout(() => {
+            if (!hayLugar) {
+                setNumeroSinLugar(siguiente);
+                setGameOver(true);
+                return;
+            }
+            setNumero(siguiente);
+        }, 50);
+        setTimeout(() => {
+            setSaliendo(false);
+            setColocado(false);
+        }, 80);
     }
 
-    return(
+    function retry() {
+        setNumero(generarNumero());
+        setBoard(Array(20).fill(null));
+        setDragging(false);
+        setGameOver(false);
+        setWin(false);
+        setSaliendo(false);
+        setColocado(false);
+        setNumeroSinLugar(null);
+    }
 
+    return (
         <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
-        
             <div className="app">
-                <h1>ORDER GAME</h1>
-
-                <p className="subtitle">
-                    Arrastrá el número hacia una casilla.
-                </p>
+                <h1>ASCEND</h1>
+                <p className="subtitle">Colocá cada número en orden ascendente. Sin espacio para errores</p>
 
                 <div className="cardSlot">
-                    {numero != null && !dragging && <Card numero={numero} />}
+                    {!dragging && !saliendo && !gameOver && !win && (
+                        <Card key={numero} numero={numero} />
+                    )}
                 </div>
 
-                <Board
-                    board={board}
-                />
+                <Board board={board} />
 
-                <DragOverlay>
-                    {dragging &&
-                        <Card numero={numero} overlay={true}/>
-                    }
+                <DragOverlay dropAnimation={null}>
+                    {dragging && <Card numero={numero} dragging={true} />}
                 </DragOverlay>
 
+                {win && <WinScreen board={board} onRetry={retry} />}
+                {gameOver && <GameOver numero={numeroSinLugar} onRetry={retry} />}
             </div>
         </DndContext>
     );
-
 }
 
 export default App;
