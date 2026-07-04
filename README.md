@@ -27,8 +27,8 @@ Cada turno se genera un número aleatorio entre 1 y 999. Tu objetivo es arrastra
 ## Correrlo localmente
 
 ```bash
-git clone https://github.com/ignamosconi/order-game
-cd order-game
+git clone https://github.com/ignamosconi/ascend
+cd ascend
 npm install
 npm run dev
 ```

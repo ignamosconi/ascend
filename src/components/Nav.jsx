@@ -20,7 +20,7 @@ function Nav() {
     return (
         <div className="nav" ref={navRef}>
             <a
-                href="https://github.com/ignamosconi/order-game"
+                href="https://github.com/ignamosconi/ascend"
                 target="_blank"
                 className="navLink"
                 draggable="false"
