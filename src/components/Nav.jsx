@@ -43,7 +43,9 @@ function Nav() {
                             <span>Igna :)</span>
                         </div>
                         <p className="popupDesc">
-                            I don't remember any code I wrote, even though it made me.
+                            <a href="https://www.ignamosconi.com.ar/" target="_blank" rel="noopener noreferrer">
+                                https://www.ignamosconi.com.ar/
+                            </a>
                         </p>
                         <div className="popupSocial">
                             <a href="https://github.com/ignamosconi" target="_blank" draggable="false">
