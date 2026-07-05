@@ -106,7 +106,7 @@ function App() {
                 <Nav />
                 <h1>ASCEND</h1>
                 <p className="subtitle">
-                    Completá la grilla en orden ascendente.
+                    Complete the grid in ascending order.
                 </p>
 
                 <div className="cardSlot">
