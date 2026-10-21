@@ -126,7 +126,6 @@ function App() {
                 {win && <WinScreen board={board} onRetry={retry} />}
                 {gameOver && <GameOver numero={numeroSinLugar} onRetry={retry} />}
             
-                <button className="retryFab" onClick={retry} title="Reiniciar">↺</button>
             </div>
         </DndContext>
     );
