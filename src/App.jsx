@@ -106,7 +106,7 @@ function App() {
                 <Nav />
                 <h1>ASCEND</h1>
                 <p className="subtitle">
-                    Complete the grid in ascending order.
+                    Completá la grilla en orden ascendente.
                 </p>
 
                 <div className="cardSlot">
@@ -125,6 +125,8 @@ function App() {
                 </DragOverlay>
                 {win && <WinScreen board={board} onRetry={retry} />}
                 {gameOver && <GameOver numero={numeroSinLugar} onRetry={retry} />}
+            
+                <button className="retryFab" onClick={retry} title="Reiniciar">↺</button>
             </div>
         </DndContext>
     );

@@ -235,6 +235,38 @@ h1{
     margin: 0;
 }
 
+/* ── RETRY FAB ── */
+.retryFab {
+    position: fixed;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: white;
+    border: 5px solid black;
+    box-shadow: 5px 5px 0 black;
+    font-size: 32px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .15s;
+    z-index: 50;
+}
+
+.retryFab:hover {
+    transform: translateX(-50%) translateY(-3px) rotate(-30deg);
+    box-shadow: 5px 8px 0 black;
+}
+
+.retryFab:active {
+    transform: translateX(-50%) translateY(1px) rotate(-60deg);
+    box-shadow: 3px 3px 0 black;
+}
+
 /* ── NAV ── */
 .nav {
     position: fixed;
