@@ -8,6 +8,7 @@ import Card from "./components/Card";
 import WinScreen from "./components/WinScreen";
 import GameOver from "./components/GameOver";
 import { generarNumero, hayLugarParaNumero, checkWin, puedeColocar } from "./game";
+import { RotateCcw } from "lucide-react";
 
 function App() {
     const sensors = useSensors(
@@ -121,7 +122,9 @@ function App() {
                         )}
                     </div>
                     {!gameOver && !win && (
-                        <button className="retryFab" onClick={retry} title="Reiniciar">↺</button>
+                        <button className="retryFab" onClick={retry} title="Reiniciar">
+                            <RotateCcw size={28} strokeWidth={3} />
+                        </button>
                     )}
                 </div>
                 <Board board={board} colores={coloresTablero} dragging={dragging} />
