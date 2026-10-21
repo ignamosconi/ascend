@@ -20,10 +20,6 @@ function Nav() {
     return (
         <div className="nav" ref={navRef}>
 
-            <button className="retryFab" onClick={retry} title="Reiniciar">
-                ↺
-            </button>
-
             <a
                 href="https://github.com/ignamosconi/ascend"
                 target="_blank"

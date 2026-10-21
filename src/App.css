@@ -235,12 +235,20 @@ h1{
     margin: 0;
 }
 
+/* ── CARD SLOT ROW ── */
+.cardSlotRow {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 50px;
+}
+
+.cardSlotRow .cardSlot {
+    margin-bottom: 0;
+}
+
 /* ── RETRY FAB ── */
 .retryFab {
-    position: fixed;
-    bottom: 32px;
-    left: 50%;
-    transform: translateX(-50%);
     width: 64px;
     height: 64px;
     border-radius: 50%;
@@ -254,16 +262,16 @@ h1{
     align-items: center;
     justify-content: center;
     transition: .15s;
-    z-index: 50;
+    flex-shrink: 0;
 }
 
 .retryFab:hover {
-    transform: translateX(-50%) translateY(-3px) rotate(-30deg);
+    transform: translateY(-3px) rotate(-30deg);
     box-shadow: 5px 8px 0 black;
 }
 
 .retryFab:active {
-    transform: translateX(-50%) translateY(1px) rotate(-60deg);
+    transform: translateY(1px) rotate(-60deg);
     box-shadow: 3px 3px 0 black;
 }
 
@@ -408,10 +416,21 @@ h1{
         font-size: 44px;
     }
 
+    .cardSlotRow {
+        gap: 16px;
+        margin-bottom: 24px;
+    }
+
     .cardSlot {
         width: 160px;
         height: 90px;
-        margin-bottom: 24px;
+        margin-bottom: 0;
+    }
+
+    .retryFab {
+        width: 52px;
+        height: 52px;
+        font-size: 26px;
     }
 
     .retryBtnSlot {

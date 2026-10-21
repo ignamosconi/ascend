@@ -109,14 +109,19 @@ function App() {
                     Completá la grilla en orden ascendente.
                 </p>
 
-                <div className="cardSlot">
-                    {!dragging && !saliendo && !gameOver && !win && (
-                        <Card key={numero} numero={numero} color={colorActual} />
-                    )}
-                    {mostrarBotonOtra && (
-                        <button className="retryBtn retryBtnSlot" onClick={retry}>
-                            ¿Otra?
-                        </button>
+                <div className="cardSlotRow">
+                    <div className="cardSlot">
+                        {!dragging && !saliendo && !gameOver && !win && (
+                            <Card key={numero} numero={numero} color={colorActual} />
+                        )}
+                        {mostrarBotonOtra && (
+                            <button className="retryBtn retryBtnSlot" onClick={retry}>
+                                ¿Otra?
+                            </button>
+                        )}
+                    </div>
+                    {!gameOver && !win && (
+                        <button className="retryFab" onClick={retry} title="Reiniciar">↺</button>
                     )}
                 </div>
                 <Board board={board} colores={coloresTablero} dragging={dragging} />
@@ -125,7 +130,6 @@ function App() {
                 </DragOverlay>
                 {win && <WinScreen board={board} onRetry={retry} />}
                 {gameOver && <GameOver numero={numeroSinLugar} onRetry={retry} />}
-            
             </div>
         </DndContext>
     );
